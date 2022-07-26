@@ -1,0 +1,59 @@
+.container{
+    margin: 0 auto;
+    position: relative;
+    height: 35rem;
+    width: 45rem;
+    box-shadow: 0px 0.4rem 2.5rem lightgray;
+    border-radius: 1rem;
+    &__bottom{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        position: absolute;
+        width: 100%;
+        bottom: 5%;
+        padding-top: 5%;
+        border-top: 0.1rem solid lightgray;
+        &__left{
+            position: relative;
+            left: 10%;
+            width: 50%;
+            font-family: 'Manrope' , sans-serif;
+            font-weight: 500;
+            font-size: 15px;
+            &__list{
+                display: flex;
+                flex-direction: column;
+                &__line{
+                    color: hsl(225, 20%, 60%);
+                    padding-left: 1rem;
+                    list-style-image: url("../../../public/imgs/icon-check.svg");
+                    line-height: 1.8rem;
+                }
+            }
+        }
+        &__right{
+            position: relative;
+            right: 10%;
+            width: 28%;
+            font-family: 'Manrope' , sans-serif;
+            font-weight: 500;
+            font-size: 16px;
+            &__button{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                color: hsl(224, 65%, 95%);
+                border-radius: 4.5rem;
+                height: 3.2rem;
+                background-color: hsl(227, 35%, 25%);
+                
+            }
+            &:hover{
+                cursor: pointer;
+            }
+        }
+       
+       
+    }
+}
