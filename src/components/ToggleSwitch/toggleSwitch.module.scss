@@ -1,0 +1,43 @@
+.switch{
+    display:flex;
+    position: relative;
+    top: 1%;
+    &__input{
+        &[type=checkbox]{
+            // escode a box original
+            height: 0;
+            width: 0;
+            visibility: hidden; 
+            &:checked + label {
+                &:after{
+                    left: calc(100% - 4px);
+                    transform: translateX(-100%);
+                }
+            }
+        }
+        &:checked + label{
+            background-color: hsl(174, 86%, 45%);
+        }
+    }
+    &__label{
+        cursor: pointer;
+        width: 50px;
+        height: 25px;
+        background:  hsl(223, 50%, 87%);
+        border-radius: 24px;
+        position: relative;
+        transition: 0.3s;
+        &:after{
+            content: "";
+            position: absolute;
+            top: 4px;
+            left: 4px;
+            width: 16px;
+            height: 16px;
+            background: white;
+            border-radius: 16px;
+            transition: 0.3s;
+        }
+    }
+}
+
