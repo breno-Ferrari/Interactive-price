@@ -5,12 +5,10 @@ import ToggleSwitch from "components/ToggleSwitch"
 import { useEffect, useRef, useState } from "react"
 import React from "react";
 
-interface Size {
-    width: number;
-  }
+
 
 export default function Box(){
-    const [size, setSize] = useState<Size>();
+    const [size, setSize] = useState<number>();
     const [value,setValue] = useState(1);
     function switchInput(){
         if(value === 1){
@@ -19,20 +17,14 @@ export default function Box(){
             setValue(1)
         }        
     }   
-    const resizeHanlder = () => {
-        const width = window.innerWidth;
-        const breakpoint = 750;
-        if(width > breakpoint){
-            setSize({width:width});
+    useEffect(()=>{
+        if(window.innerWidth > 750){
+            setSize(1)
         }else{
-            setSize({width:width});
+            setSize(0)
         }
-    };
-    useEffect(() => {
-        window.addEventListener('resize', resizeHanlder);
-        
-        
-    }, []);
+    },[])
+
   return ( 
     <main className={styles.container}>
         <div className={styles.container__top}>
@@ -49,7 +41,7 @@ export default function Box(){
             <ToggleSwitch onChange={switchInput} />
             <p className={styles.container__middle__text}>Yarly Billing</p>
             <div className={styles.container__middle__discount}>
-               {!size || size.width > 750? 
+               {size ? 
                 (<p className={styles.container__middle__discount__text}>25% discount</p>)
                 : 
                 (<p className={styles.container__middle__discount__text}>-25%</p>)}
