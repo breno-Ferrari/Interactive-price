@@ -34,11 +34,14 @@
             background-position: center;
             background-size: 25px;
            
+            transition: all 0.3s;
             &:hover{
                 box-shadow: 1px 8px 30px hsl(174, 86%, 45%);
+                transition: all 0.3s;
             }
             &:active{
                 background-color: hsl(174, 86%, 35%);
+                transition: all 0.3s;
             }
         }
         // mozila
