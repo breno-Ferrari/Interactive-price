@@ -13,7 +13,7 @@ export default function ToggleSlide(){
   return ( 
     <div className={styles.container}>
        <input
-       className={styles.container__slider}
+        className={styles.container__slider}
         type="range"
         min="0"
         max={MAX}

@@ -18,6 +18,7 @@
         &:checked + label{
             background-color: hsl(174, 86%, 45%);
         }
+        
     }
     &__label{
         cursor: pointer;
@@ -27,6 +28,7 @@
         border-radius: 24px;
         position: relative;
         transition: 0.3s;
+
         &:after{
             content: "";
             position: absolute;
@@ -37,6 +39,10 @@
             background: white;
             border-radius: 16px;
             transition: 0.3s;
+            
+        }
+        &:hover{
+            background-color:hsl(174, 86%, 75%);
         }
     }
 }

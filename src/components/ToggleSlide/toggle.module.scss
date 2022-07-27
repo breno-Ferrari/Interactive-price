@@ -1,14 +1,13 @@
 .container{
     margin: 0 auto;
-    width: 80%;
+    width: 86%;
     position: relative;
-    top: 40%;
+    top: 35%;
     &__slider{
-       width: 100%;
-       height: 10%;
-       -webkit-appearance: none;
+        appearance: none;
         //mexe na barra
-        &[type=range] { cursor: pointer;
+        &[type=range] { 
+            cursor: pointer;
             margin-right: 15px;
             width: 100%;
             height: 8px;
@@ -29,39 +28,52 @@
             width: 40px;
             border-radius: 50%;
             background: hsl(174, 86%, 45%);
+            // seta da bolinha
             background-image: url("../../../public/imgs/icon-slider.svg");
             background-repeat:no-repeat;
             background-position: center;
             background-size: 25px;
-          
+           
+            &:hover{
+                box-shadow: 1px 8px 30px hsl(174, 86%, 45%);
+            }
+            &:active{
+                background-color: hsl(174, 86%, 35%);
+            }
         }
         // mozila
         &[type=range]::-moz-range-thumb {
+            display: flex;
+            flex-direction: column;
+            text-align: center;
             appearance: none;
             height: 40px;
             width: 40px;
             border-radius: 50%;
             background: hsl(174, 86%, 45%);
+            background-image: url("../../../public/imgs/icon-slider.svg");
+            background-repeat:no-repeat;
+            background-position: center;
+            background-size: 25px;
         }
         // IE
         &[type=range]::-ms-thumb {
+            display: flex;
+            flex-direction: column;
+            text-align: center;
             appearance: none;
             height: 40px;
             width: 40px;
             border-radius: 50%;
             background: hsl(174, 86%, 45%);
+            background-image: url("../../../public/imgs/icon-slider.svg");
+            background-repeat:no-repeat;
+            background-position: center;
+            background-size: 25px;
         }
+       
     }
+    @media (max-width:750px) {
+        top: -7%; 
+    }   
 }
-
-// input[type="range"] {
-//   -webkit-appearance: none;
-//   margin-right: 15px;
-//   width: 200px;
-//   height: 70px;
-//   background: rgba(255, 255, 255, 0.6);
-//   border-radius: 5px;
-//   background-image: linear-gradient(#ff4500, #ff4500);
-//   background-size: 70% 100%;
-//   background-repeat: no-repeat;
-// }

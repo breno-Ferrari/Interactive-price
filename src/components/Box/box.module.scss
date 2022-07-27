@@ -5,21 +5,70 @@
     width: 40rem;
     box-shadow: 0px 0.4rem 2.5rem lightgray;
     border-radius: 1rem;
-    &__middle{
+    &__top{
         display: flex;
-        justify-content: center;
-        // justify-content: space-around;
-        align-items: center;
+        justify-content: space-between;
         align-items: center;
         position: relative;
-        top: 55%;
+        top: 20%;
+        margin: 0 7%;
+        @media (max-width:750px) {
+            top: 10%;
+        }
         &__text{
             font-family: 'Manrope' , sans-serif;
             font-weight: 500;
+            font-size: 22px;  
+            color: hsl(225, 20%, 60%);   
+            @media (max-width:750px) {
+                margin-bottom: 20%;
+                letter-spacing: 0.1rem;
+                font-size: 20px;  
+            }       
+        }
+        &__textValue{
+            font-family: 'Manrope' , sans-serif;
+            font-weight: 800;
+            font-size: 40px;  
+            color: hsl(227, 35%, 25%); 
+            @media (max-width:750px) {
+                margin-top: 20%;
+                font-size: 32px;  
+                letter-spacing: 0.1rem;
+            } 
+            &__span{
+                display: inline-block;
+                position: relative;
+                bottom: 7px;
+                font-family: 'Manrope' , sans-serif;
+                font-weight: 600;
+                font-size: 20px;  
+                color: hsl(225, 20%, 60%);   
+                @media (max-width:750px) {
+                    bottom: 4px;
+                }        
+            }        
+        }
+        @media (max-width:750px) {
+           flex-direction: column;
+        }
+    }
+    &__middle{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        top: 50%;
+        &__text{
+            font-family: 'Manrope' , sans-serif;
+            font-weight: 600;
             font-size: 15px;  
             color: hsl(225, 20%, 60%);
             margin-right: 2%;
-            margin-left: 2%;           
+            margin-left: 2%;  
+            @media (max-width:750px) {
+                font-size: 10px;  
+            }         
         }
         &__discount{
             display: flex;
@@ -41,6 +90,9 @@
                 margin: 0 0.5rem;
             }
         }
+        @media (max-width:750px) {
+            top: 20%;  
+        }  
     }
     &__bottom{
         display: flex;
@@ -66,16 +118,20 @@
                     padding-left: 1rem;
                     list-style-image: url("../../../public/imgs/icon-check.svg");
                     line-height: 1.8rem;
+                    @media (max-width:750px) {
+                        padding-left: 0rem;
+                    }
                 }
+            }
+            @media (max-width:750px) {
+               left: 0%;
+               width: 60%;
             }
         }
         &__right{
             position: relative;
-            right: 10%;
+            right: 6.5%;
             width: 28%;
-            font-family: 'Manrope' , sans-serif;
-            font-weight: 500;
-            font-size: 16px;
             &__button{
                 display: flex;
                 justify-content: center;
@@ -84,13 +140,30 @@
                 border-radius: 4.5rem;
                 height: 3.2rem;
                 background-color: hsl(227, 35%, 25%);
-                
+                transition: all 0.3s;
+                font-family: 'Manrope' , sans-serif;
+                font-weight: 500;
+                font-size: 16px;
+                &:hover{
+                    cursor: pointer;
+                    font-size: 17px ;
+                    transition: all 0.3s;
+                    color: hsl(224, 65%, 100%);
+                }
             }
-            &:hover{
-                cursor: pointer;
+            @media (max-width:750px) {
+                right: 0%;
+                width: 60%;
+                margin-top: 10%;
             }
+        }   
+        @media (max-width:750px) {
+            text-align: center;
+            flex-direction: column;
         }
-       
-       
+    }
+    @media (max-width:750px) {
+        width: 20rem;
+        height: 35rem;
     }
 }
