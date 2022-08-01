@@ -9,16 +9,49 @@ import React from "react";
 
 export default function Box(){
     const [size, setSize] = useState<number>();
-    const [value,setValue] = useState(1);
+    const [input,setInput] = useState(1);
+    const [page,setPages] = useState("1");
+    const [price,setPrice] = useState("3.00");
+
+
     function switchInput(){
-        if(value === 1){
-            setValue(0)
+        if(input === 1){
+            setInput(0)
         }else{
-            setValue(1)
+
+            setInput(1)
         }        
     }   
+
+    function pagesValue(){
+        var pagesQtd:string | number | null;
+        var Price:string | number | null;
+        var pagesString:string ;
+        var PriceString:string ;
+        
+        const field =  document.querySelector("input")?.value;
+        const fieldNumber = Number(field);   
+        const discount = 0.25;
+
+        pagesQtd = (fieldNumber).toFixed()
+        pagesString = pagesQtd.toString();
+
+        Price = (3 * fieldNumber).toFixed(2)
+        PriceString = Price.toString();
+
+        if(fieldNumber > 0 ){
+            if(input === 0){
+                Price = (fieldNumber * discount).toFixed(2);
+                PriceString = Price.toString();
+                setPrice(PriceString);
+            }
+            setPages(pagesString);
+            setPrice(PriceString);
+        }
+    }   
+    
     useEffect(()=>{
-        if(window.innerWidth > 750){
+        if(window.innerWidth > 750){          
             setSize(1)
         }else{
             setSize(0)
@@ -28,14 +61,10 @@ export default function Box(){
   return ( 
     <main className={styles.container}>
         <div className={styles.container__top}>
-            <p className={styles.container__top__text}>100k pageviews</p>
-            {value ? 
-                <p className={styles.container__top__textValue}>$16.00 <span className={styles.container__top__textValue__span}>/ month</span></p>
-            :
-                <p className={styles.container__top__textValue}>$144.00 <span className={styles.container__top__textValue__span}>/ year</span></p>
-            }
+            <p className={styles.container__top__text}>{page}k pageViews</p>
+            <p className={styles.container__top__textValue}>${price} <span className={styles.container__top__textValue__span}>/ month</span></p>
         </div>
-        <ToggleSlide /> 
+        <ToggleSlide onChange={pagesValue} /> 
         <div className={styles.container__middle}>
             <p className={styles.container__middle__text}>Montlhy Billing</p>
             <ToggleSwitch onChange={switchInput} />

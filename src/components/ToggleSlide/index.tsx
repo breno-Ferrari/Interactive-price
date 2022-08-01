@@ -1,25 +1,27 @@
 import { useState } from "react";
 import styles from "./toggle.module.scss"
-export default function ToggleSlide(){
-  const [value, setValue] = useState(0);
+
+
+export default function ToggleSlide({...props}){
+  const [field, setField] = useState(0);
   const MAX = 100;
 
-  const getBackgroundSize = () => {
+  function getBackgroundSize(){
     return {
-      backgroundSize: `${(value * 100) / MAX}% 100%`,
+      backgroundSize: `${(field * 100) / MAX}% 100%`
     };
   };
 
   return ( 
-    <div className={styles.container}>
+    <div className={styles.container} {...props}>
        <input
         className={styles.container__slider}
         type="range"
-        min="0"
+        min="1"
         max={MAX}
-        onChange={(e) => setValue(e.target.valueAsNumber)}
+        onChange={(e) => setField(e.target.valueAsNumber)}
         style={getBackgroundSize()}
-        value={value}
+        value={field}
           />
     </div>
   )
