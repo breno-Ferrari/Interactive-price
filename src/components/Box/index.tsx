@@ -4,49 +4,56 @@ import ToggleSlide from "components/ToggleSlide"
 import ToggleSwitch from "components/ToggleSwitch"
 import { useEffect, useRef, useState } from "react"
 import React from "react";
+import { info } from "console"
+
+type Props = {
+    pagesQtd:string | number | null;
+    Price:string | number | null;
+    PriceDiscount:string | number | null;
+}
 
 
-
-export default function Box(){
+export default function Box({pagesQtd,Price,PriceDiscount}:Props){
     const [size, setSize] = useState<number>();
     const [input,setInput] = useState(1);
     const [page,setPages] = useState("1");
     const [price,setPrice] = useState("3.00");
+    const infos: (any)[] = [];
 
+
+    function inputsAdjust(){
+        const field =  document.querySelector("input")?.value;
+        const fieldNumber = Number(field);  
+        const discount = 0.25;
+
+        Price = (3 * fieldNumber).toFixed(2)
+        pagesQtd = (fieldNumber).toFixed()
+        PriceDiscount = (fieldNumber * discount).toFixed(2);
+
+        infos.push(Price,pagesQtd,PriceDiscount,fieldNumber,discount)
+    }
 
     function switchInput(){
+        inputsAdjust();        
         if(input === 1){
+            setPrice(infos[2])
             setInput(0)
         }else{
-
+            setPrice(infos[0])
             setInput(1)
-        }        
+        } 
     }   
 
     function pagesValue(){
-        var pagesQtd:string | number | null;
-        var Price:string | number | null;
-        var pagesString:string ;
-        var PriceString:string ;
-        
-        const field =  document.querySelector("input")?.value;
-        const fieldNumber = Number(field);   
-        const discount = 0.25;
-
-        pagesQtd = (fieldNumber).toFixed()
-        pagesString = pagesQtd.toString();
-
-        Price = (3 * fieldNumber).toFixed(2)
-        PriceString = Price.toString();
-
-        if(fieldNumber > 0 ){
+        inputsAdjust(); 
+        let fieldValue = infos[3];
+        if(fieldValue > 0 ){
             if(input === 0){
-                Price = (fieldNumber * discount).toFixed(2);
-                PriceString = Price.toString();
-                setPrice(PriceString);
+                Price = (fieldValue * infos[4]).toFixed(2);                
+                setPrice(Price);
             }
-            setPages(pagesString);
-            setPrice(PriceString);
+            setPages(infos[1]);
+            setPrice(infos[0]);
         }
     }   
     
