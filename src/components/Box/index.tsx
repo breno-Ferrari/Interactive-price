@@ -4,22 +4,22 @@ import ToggleSlide from "components/ToggleSlide"
 import ToggleSwitch from "components/ToggleSwitch"
 import { useEffect, useRef, useState } from "react"
 import React from "react";
-import { info } from "console"
 
 type Props = {
-    pagesQtd:string | number | null;
-    Price:string | number | null;
-    PriceDiscount:string | number | null;
+    
 }
 
 
-export default function Box({pagesQtd,Price,PriceDiscount}:Props){
+export default function Box(){
     const [size, setSize] = useState<number>();
     const [input,setInput] = useState(1);
     const [page,setPages] = useState("1");
     const [price,setPrice] = useState("3.00");
-    const infos: (any)[] = [];
+    let pagesQtd:string | number | null;
+    let Price:string | number | null;
+    let PriceDiscount:string | number | null;
     const valores:any ={}
+    
 
 
     function inputsAdjust(){
@@ -65,8 +65,12 @@ export default function Box({pagesQtd,Price,PriceDiscount}:Props){
             setSize(1)
         }else{
             setSize(0)
-        }
+        }  
     },[])
+
+    useEffect(()=>{
+        pagesValue()
+    },[input])
 
   return ( 
     <main className={styles.container}>
