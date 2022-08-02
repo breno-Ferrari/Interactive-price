@@ -19,6 +19,7 @@ export default function Box({pagesQtd,Price,PriceDiscount}:Props){
     const [page,setPages] = useState("1");
     const [price,setPrice] = useState("3.00");
     const infos: (any)[] = [];
+    const valores:any ={}
 
 
     function inputsAdjust(){
@@ -30,30 +31,32 @@ export default function Box({pagesQtd,Price,PriceDiscount}:Props){
         pagesQtd = (fieldNumber).toFixed()
         PriceDiscount = (fieldNumber * discount).toFixed(2);
 
-        infos.push(Price,pagesQtd,PriceDiscount,fieldNumber,discount)
+        valores['Price'] = Price;
+        valores['pagesQtd'] = pagesQtd;
+        valores['PriceDiscount'] = PriceDiscount;
+        valores['fieldNumber'] = fieldNumber;
+        valores['discount'] = discount;        
     }
 
     function switchInput(){
-        inputsAdjust();        
         if(input === 1){
-            setPrice(infos[2])
             setInput(0)
         }else{
-            setPrice(infos[0])
             setInput(1)
         } 
     }   
 
-    function pagesValue(){
-        inputsAdjust(); 
-        let fieldValue = infos[3];
-        if(fieldValue > 0 ){
+    function pagesValue(){  
+        inputsAdjust()     
+        if(valores.fieldNumber > 0 ){
             if(input === 0){
-                Price = (fieldValue * infos[4]).toFixed(2);                
-                setPrice(Price);
+                setPages(valores.pagesQtd);
+                setPrice(valores.PriceDiscount)
+            }else{
+                setPages(valores.pagesQtd);
+                setPrice(valores.Price);
             }
-            setPages(infos[1]);
-            setPrice(infos[0]);
+          
         }
     }   
     
