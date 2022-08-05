@@ -4,6 +4,7 @@
     height: 30rem;
     width: 40rem;
     border-radius: 1rem;
+    box-shadow: 0px 0.4rem 2.5rem var(--color-shadow-box);
     &__top{
         display: flex;
         justify-content: space-between;
@@ -17,7 +18,8 @@
         &__text{
             font-family: 'Manrope' , sans-serif;
             font-weight: 500;
-            font-size: 22px;   
+            font-size: 22px;  
+            color: var(--color-text-p1);
             @media (max-width:750px) {
                 margin-bottom: 20%;
                 letter-spacing: 0.1rem;
@@ -28,6 +30,7 @@
             font-family: 'Manrope' , sans-serif;
             font-weight: 800;
             font-size: 40px;  
+            color: var(--color-text-value);
             @media (max-width:750px) {
                 margin-top: 20%;
                 font-size: 32px;  
@@ -39,7 +42,8 @@
                 bottom: 7px;
                 font-family: 'Manrope' , sans-serif;
                 font-weight: 600;
-                font-size: 20px;    
+                font-size: 20px; 
+                color: var(--color-text-p1);   
                 @media (max-width:750px) {
                     bottom: 4px;
                 }        
@@ -61,6 +65,7 @@
             font-size: 15px;  
             margin-right: 2%;
             margin-left: 2%;  
+            color: var(--color-text-p1);
             @media (max-width:750px) {
                 font-size: 10px;  
             }         
@@ -80,6 +85,8 @@
             border-radius: 50px;
             margin: 0 0.5rem;
             padding: 0.2rem;
+            background-color: var(--color-text-bgdiscount);
+            color: var(--color-text-discount);
         }
         @media (max-width:750px) {
             top: 20%;  
@@ -108,6 +115,7 @@
                     padding-left: 1rem;
                     list-style-image: url("../../../public/imgs/icon-check.svg");
                     line-height: 1.8rem;
+                    color: var(--color-text-list);
                     @media (max-width:750px) {
                         padding-left: 0rem;
                         list-style-position: inside;
@@ -133,6 +141,8 @@
                 font-family: 'Manrope' , sans-serif;
                 font-weight: 500;
                 font-size: 16px;
+                color: var(--color-text-btn);
+                background-color: var(--color-text-bgbtn);
                 &:hover{
                     cursor: pointer;
                     font-size: 17px ;
