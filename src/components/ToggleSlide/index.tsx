@@ -13,7 +13,7 @@ export default function ToggleSlide({...props}){
   };
 
   return ( 
-    <div className={styles.container} {...props}>
+    <div className={styles.container} {...props} id="slider">
        <input
         className={styles.container__slider}
         type="range"

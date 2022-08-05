@@ -47,3 +47,97 @@ body{
     max-height: 100vh;
     margin: 0 auto;
 }
+
+body,
+body[data-theme="light"] {
+    --color-text-h1: hsl(227, 35%, 25%);
+    --color-text-h2: hsl(225, 20%, 80%);
+
+    --color-text-list: hsl(225, 20%, 60%);
+
+    --color-text-p1: hsl(225, 20%, 70%);
+    --color-text-p2: hsl(227, 35%, 25%);
+
+    --color-text-value: hsl(227, 35%, 25%);
+
+    --color-text-discount: hsl(15, 100%, 70%);
+    --color-text-bgdiscount: hsl(14, 92%, 95%);
+
+    --color-text-btn: hsl(224, 65%, 95%);
+    --color-text-bgbtn: hsl(227, 35%, 25%);
+
+    --color-bg-primary: #fff;
+    --color-bg-toggle: #1e90ff;
+    --color-shadow-box:hsl(0, 0%, 83%);
+}
+
+body[data-theme="dark"] {
+
+    --color-text-h1: #e3e3e3;
+    --color-text-h2: hsl(225, 20%, 60%);
+
+    --color-text-list: hsl(225, 20%, 90%);
+
+    --color-text-p1: hsl(225, 20%, 85%);
+    --color-text-p2: hsl(225, 20%, 80%);
+
+    --color-text-value: hsl(225, 20%, 80%);
+
+    --color-text-discount: hsl(15, 100%, 70%);
+    --color-text-bgdiscount: hsl(14, 92%, 95%);
+
+    --color-text-btn: hsl(14, 92%, 95%);
+    --color-text-bgbtn: hsl(227, 35%, 25%);
+
+    --color-bg-primary: #15232d;
+    --color-bg-toggle: #a9a9a9;
+    --color-shadow-box:hsla(0, 0%, 0%, 1);
+}
+
+body {
+    background: var(--color-bg-primary);
+    font-family: sans-serif;
+    transition: background 0.25s ease-in-out;
+}
+/* title */
+
+h1 {
+    color: var(--color-text-h1);
+}
+h2 {
+    color: var(--color-text-h2);
+}
+
+/* box */
+main{
+    box-shadow: 0px 0.4rem 2.5rem var(--color-shadow-box);
+}
+    /* top */
+#box div:nth-child(0){
+    color: var(--color-text-p1);
+}
+#box div:nth-child(1){
+    color: var(--color-text-value);
+}
+#box div:nth-child(1) span{
+    color: var(--color-text-p1);
+}
+    /* middle */
+#box div:nth-child(3) {
+    color: var(--color-text-p1);
+}
+#box div:nth-child(3) p:nth-child(3){
+    color: var(--color-text-p1);
+}
+#box div:nth-child(3) p:nth-child(4){
+    background-color: var(--color-text-bgdiscount);
+    color: var(--color-text-discount);
+}
+    /* bottom */
+#box div:nth-child(4) div ul li{
+    color: var(--color-text-list);
+}
+#box div:nth-child(4) div div{
+    color: var(--color-text-btn);
+    background-color: var(--color-text-bgbtn);
+}

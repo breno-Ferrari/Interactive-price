@@ -1,5 +1,6 @@
 import Texts from "./const"
 import styles from "./title.module.scss"
+import ThemeToggle from "components/ThemeToggle"
 export default function Title(){
   return ( 
     <header className={styles.container}>
@@ -11,6 +12,9 @@ export default function Title(){
           </div>
         ))
       }
+      <div className={styles.container__switch}>
+        <ThemeToggle />
+      </div>
     </header>
   )
 }

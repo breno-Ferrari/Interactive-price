@@ -73,7 +73,7 @@ export default function Box(){
     },[input])
 
   return ( 
-    <main className={styles.container}>
+    <main className={styles.container} id="box">
         <div className={styles.container__top}>
             <p className={styles.container__top__text}>{page}k pageViews</p>
             <p className={styles.container__top__textValue}>${price} <span className={styles.container__top__textValue__span}>/ month</span></p>
@@ -83,12 +83,10 @@ export default function Box(){
             <p className={styles.container__middle__text}>Montlhy Billing</p>
             <ToggleSwitch onChange={switchInput} />
             <p className={styles.container__middle__text}>Yarly Billing</p>
-            <div className={styles.container__middle__discount}>
-               {size ? 
-                (<p className={styles.container__middle__discount__text}>25% discount</p>)
+            {size ? 
+                (<p className={styles.container__middle__txdiscount}>25% discount</p>)
                 : 
-                (<p className={styles.container__middle__discount__text}>-25%</p>)}
-            </div>
+                (<p className={styles.container__middle__discount}>-25%</p>)}
         </div>
         <div className={styles.container__bottom}>
             <div className={styles.container__bottom__left}>

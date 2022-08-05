@@ -1,12 +1,15 @@
 .container{
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
     &__container{
+        width: 100%;
         display: flex;
         flex-direction: column;
         text-align: center;
-        padding-bottom: 5rem;
+        padding-bottom: 3rem;
         padding-top: 5rem;
         &__title{
-            color: hsl(227, 35%, 25%);
             font-family: 'Manrope', sans-serif;
             font-weight: 700;
             font-size: 2rem;
@@ -19,7 +22,6 @@
             }
         }
         &__subtitle{
-            color: hsl(225, 20%, 60%);
             font-family: 'Manrope', sans-serif;
             font-weight: 500;
             font-size: 1rem;
@@ -32,5 +34,16 @@
             }
         }
     }
-    
+    &__switch{
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        padding-bottom: 3rem;
+        padding-top: 5rem;
+    }
+    @media (max-width:750px) {
+        flex-direction: column-reverse;
+        padding-bottom: 0;
+        padding-top: 0;
+    }
 }
