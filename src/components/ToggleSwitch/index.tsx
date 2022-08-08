@@ -1,6 +1,6 @@
 import React, { DetailedHTMLProps, InputHTMLAttributes } from "react";
 import styles from "./toggleSwitch.module.scss"
-import { BsFillMoonFill ,BsFillSunFill} from 'react-icons/Bs';
+import { BsFillMoonFill ,BsFillSunFill} from 'react-icons/bs';
 type Props = {
   id:string,
   click:React.MouseEventHandler
