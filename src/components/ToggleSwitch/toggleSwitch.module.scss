@@ -45,5 +45,11 @@
             background-color:hsl(174, 86%, 75%);
         }
     }
+    &__span{
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        height: 100%;
+    }
 }
 

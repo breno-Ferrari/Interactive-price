@@ -101,6 +101,7 @@
         bottom: 5%;
         padding-top: 5%;
         border-top: 0.1rem solid lightgray;
+       
         &__left{
             position: relative;
             left: 10%;
@@ -158,6 +159,7 @@
         @media (max-width:750px) {
             text-align: center;
             flex-direction: column;
+            padding-top: 2%;
         }
     }
     @media (max-width:750px) {

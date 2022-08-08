@@ -2,19 +2,19 @@ import styles from "./box.module.scss"
 import Texts from "./const"
 import ToggleSlide from "components/ToggleSlide"
 import ToggleSwitch from "components/ToggleSwitch"
-import { useEffect, useRef, useState } from "react"
+import ThemeToggle from "components/ThemeToggle"
+import { useEffect, useLayoutEffect, useRef, useState } from "react"
 import React from "react";
 
-type Props = {
-    
-}
 
 
 export default function Box(){
     const [size, setSize] = useState<number>();
-    const [input,setInput] = useState(1);
+    const [input,setInput] = useState(true);
     const [page,setPages] = useState("1");
     const [price,setPrice] = useState("3.00");
+    const [activeTheme, setActiveTheme] = useState("light");
+    const inactiveTheme = activeTheme === "light" ? "dark" : "light";
     let pagesQtd:string | number | null;
     let Price:string | number | null;
     let PriceDiscount:string | number | null;
@@ -23,8 +23,14 @@ export default function Box(){
 
 
     function inputsAdjust(){
-        const field =  document.querySelector("input")?.value;
+                                                        // pq?
+        const field =  document.querySelectorAll("input")[1]?.value;
+        
+        console.log(field);
+        
         const fieldNumber = Number(field);  
+        console.log(fieldNumber);
+        
         const discount = 0.25;
 
         Price = (3 * fieldNumber).toFixed(2)
@@ -35,53 +41,58 @@ export default function Box(){
         valores['pagesQtd'] = pagesQtd;
         valores['PriceDiscount'] = PriceDiscount;
         valores['fieldNumber'] = fieldNumber;
-        valores['discount'] = discount;        
-    }
-
-    function switchInput(){
-        if(input === 1){
-            setInput(0)
-        }else{
-            setInput(1)
-        } 
-    }   
+        valores['discount'] = discount;   
+        console.log(valores.fieldNumber); 
+    }  
 
     function pagesValue(){  
         inputsAdjust()     
-        if(valores.fieldNumber > 0 ){
-            if(input === 0){
+        console.log(valores.fieldNumber);
+        
+        if(valores.fieldNumber >= 0 ){
+            console.log("1");
+            
+            if(input === false){
                 setPages(valores.pagesQtd);
                 setPrice(valores.PriceDiscount)
+                console.log("2");
             }else{
                 setPages(valores.pagesQtd);
                 setPrice(valores.Price);
+                console.log("3");
             }
-          
-        }
+        }       
     }   
-    
+    useLayoutEffect(() => {
+        document.body.dataset.theme = activeTheme;
+      }, [activeTheme]);
+
     useEffect(()=>{
         if(window.innerWidth > 750){          
             setSize(1)
         }else{
             setSize(0)
-        }  
+        }
     },[])
-
+    
     useEffect(()=>{
-        pagesValue()
+        pagesValue() 
     },[input])
-
+    
   return ( 
+    <>
     <main className={styles.container} id="box">
+
+        {/* <ThemeToggle  /> */}
         <div className={styles.container__top}>
+            <ToggleSwitch id={"theme"} click={() => setActiveTheme(inactiveTheme)}/> 
             <p className={styles.container__top__text}>{page}k pageViews</p>
             <p className={styles.container__top__textValue}>${price} <span className={styles.container__top__textValue__span}>/ month</span></p>
         </div>
-        <ToggleSlide onChange={pagesValue} /> 
+        <ToggleSlide onChange={pagesValue}/> 
         <div className={styles.container__middle}>
             <p className={styles.container__middle__text}>Montlhy Billing</p>
-            <ToggleSwitch onChange={switchInput} />
+            <ToggleSwitch id={"value"} click={() => setInput(!input)} />
             <p className={styles.container__middle__text}>Yarly Billing</p>
             {size ? 
                 (<p className={styles.container__middle__txdiscount}>25% discount</p>)
@@ -102,6 +113,9 @@ export default function Box(){
                 </div>
             </div>
         </div>
+        {/* <ToggleSwitch onChange={() => setActiveTheme(inactiveTheme)}/>  */}
     </main>
+    </>
+   
   )
 }
