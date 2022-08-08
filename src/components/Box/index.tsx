@@ -18,6 +18,7 @@ export default function Box(){
     let pagesQtd:string | number | null;
     let Price:string | number | null;
     let PriceDiscount:string | number | null;
+    let discountValue:string | number | null;
     const valores:any ={}
     
 
@@ -25,41 +26,30 @@ export default function Box(){
     function inputsAdjust(){
                                                         // pq?
         const field =  document.querySelectorAll("input")[1]?.value;
-        
-        console.log(field);
-        
         const fieldNumber = Number(field);  
-        console.log(fieldNumber);
-        
         const discount = 0.25;
 
-        Price = (3 * fieldNumber).toFixed(2)
+        Price = (3 * fieldNumber)
+        discountValue = Price * discount
+        PriceDiscount = (Price - discountValue).toFixed(2);
         pagesQtd = (fieldNumber).toFixed()
-        PriceDiscount = (fieldNumber * discount).toFixed(2);
 
         valores['Price'] = Price;
         valores['pagesQtd'] = pagesQtd;
         valores['PriceDiscount'] = PriceDiscount;
         valores['fieldNumber'] = fieldNumber;
         valores['discount'] = discount;   
-        console.log(valores.fieldNumber); 
     }  
 
     function pagesValue(){  
-        inputsAdjust()     
-        console.log(valores.fieldNumber);
-        
+        inputsAdjust()             
         if(valores.fieldNumber >= 0 ){
-            console.log("1");
-            
             if(input === false){
                 setPages(valores.pagesQtd);
                 setPrice(valores.PriceDiscount)
-                console.log("2");
             }else{
                 setPages(valores.pagesQtd);
                 setPrice(valores.Price);
-                console.log("3");
             }
         }       
     }   
